@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Database</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f8;
+    color:#111;
+}
+header{
+    background:#111827;
+    color:white;
+    padding:22px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+}
+.search{
+    padding:20px;
+    text-align:center;
+}
+input{
+    width:90%;
+    max-width:600px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+.phone{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+.spec{
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+button{
+    background:#2563eb;
+    color:white;
+    border:0;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+@media(max-width:700px){
+    .phone{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📱 Phone Database</h1>
+    <p>Global Smartphone Specifications & Comparison</p>
+</header>
+
+<div class="search">
+    <input type="text" placeholder="Search phones...">
+</div>
+
+<div class="container">
+
+<div class="card">
+    <h2>Latest Smartphone</h2>
+
+    <div class="phone">
+
+        <div>
+            <h2>Samsung Galaxy S26 Ultra</h2>
+            <p>Premium flagship smartphone</p>
+            <button>View Specifications</button>
+        </div>
+
+        <div>
+            <div class="spec"><b>Display:</b> AMOLED</div>
+            <div class="spec"><b>RAM:</b> 12GB / 16GB</div>
+            <div class="spec"><b>Storage:</b> 256GB / 512GB / 1TB</div>
+            <div class="spec"><b>Camera:</b> Multi-camera system</div>
+            <div class="spec"><b>Battery:</b> Large capacity</div>
+            <div class="spec"><b>Network:</b> 5G</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card">
+    <h2>Phone Comparison</h2>
+    <p>Compare processors, cameras, displays, RAM, battery and more.</p>
+    <button>Compare Phones</button>
+</div>
+
+</div>
+
+</body>
+</html>
