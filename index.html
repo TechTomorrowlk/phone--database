@@ -3,68 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phone Database</title>
+
+<title>Tech Tomorrow - Phone Database</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f6f8;
-    color:#111;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f5f8;
+    color:#111827;
 }
+
 header{
     background:#111827;
     color:white;
-    padding:22px;
+    padding:30px 20px;
     text-align:center;
 }
+
 header h1{
+    margin:0 0 8px;
+    font-size:32px;
+}
+
+header p{
     margin:0;
+    color:#cbd5e1;
 }
+
 .search{
-    padding:20px;
+    padding:25px 15px;
     text-align:center;
+    background:white;
 }
-input{
-    width:90%;
-    max-width:600px;
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #ccc;
+
+.search input{
+    width:95%;
+    max-width:650px;
+    padding:15px 18px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
     font-size:16px;
+    outline:none;
 }
+
 .container{
     max-width:1100px;
     margin:auto;
-    padding:20px;
+    padding:25px 15px 50px;
 }
-.card{
+
+.phone-card{
     background:white;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
-.phone{
+
+.phone-header{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:280px 1fr;
+    gap:30px;
+    align-items:center;
 }
-.spec{
-    padding:10px 0;
-    border-bottom:1px solid #eee;
+
+.phone-image{
+    width:100%;
+    max-width:260px;
+    height:320px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
 }
-button{
+
+.brand{
+    color:#2563eb;
+    font-size:14px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.phone-name{
+    font-size:32px;
+    margin:8px 0;
+}
+
+.description{
+    color:#64748b;
+    line-height:1.6;
+}
+
+.view-button{
     background:#2563eb;
     color:white;
     border:0;
-    padding:12px 18px;
-    border-radius:8px;
+    padding:13px 20px;
+    border-radius:10px;
+    font-size:15px;
     cursor:pointer;
+    margin-top:10px;
 }
+
+.spec-section{
+    margin-top:35px;
+}
+
+.spec-section h2{
+    font-size:22px;
+    border-bottom:2px solid #e5e7eb;
+    padding-bottom:12px;
+}
+
+.spec-row{
+    display:grid;
+    grid-template-columns:35% 65%;
+    padding:13px 10px;
+    border-bottom:1px solid #edf0f3;
+}
+
+.spec-row:nth-child(even){
+    background:#f8fafc;
+}
+
+.spec-name{
+    font-weight:bold;
+    color:#475569;
+}
+
+.spec-value{
+    color:#111827;
+}
+
+#specifications{
+    display:none;
+}
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
 @media(max-width:700px){
-    .phone{
+
+    header h1{
+        font-size:26px;
+    }
+
+    .phone-header{
         grid-template-columns:1fr;
+    }
+
+    .phone-image{
+        height:280px;
+    }
+
+    .phone-name{
+        font-size:26px;
+    }
+
+    .spec-row{
+        grid-template-columns:1fr;
+        gap:6px;
     }
 }
 </style>
@@ -73,46 +178,519 @@ button{
 <body>
 
 <header>
-    <h1>📱 Phone Database</h1>
+    <h1>📱 Tech Tomorrow</h1>
     <p>Global Smartphone Specifications & Comparison</p>
 </header>
 
 <div class="search">
-    <input type="text" placeholder="Search phones...">
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="Search phone model..."
+        onkeyup="searchPhone()"
+    >
 </div>
 
 <div class="container">
 
-<div class="card">
-    <h2>Latest Smartphone</h2>
+<div class="phone-card" id="phoneCard">
 
-    <div class="phone">
+    <div class="phone-header">
 
         <div>
-            <h2>Samsung Galaxy S26 Ultra</h2>
-            <p>Premium flagship smartphone</p>
-            <button>View Specifications</button>
+            <img
+                class="phone-image"
+                src="https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s948bztbmea/gallery/levant-galaxy-s26-ultra-s948-sm-s948bztbmea-thumb-549895553?$344_344_PNG$"
+                alt="Samsung Galaxy S26 Ultra"
+            >
         </div>
 
         <div>
-            <div class="spec"><b>Display:</b> AMOLED</div>
-            <div class="spec"><b>RAM:</b> 12GB / 16GB</div>
-            <div class="spec"><b>Storage:</b> 256GB / 512GB / 1TB</div>
-            <div class="spec"><b>Camera:</b> Multi-camera system</div>
-            <div class="spec"><b>Battery:</b> Large capacity</div>
-            <div class="spec"><b>Network:</b> 5G</div>
+            <div class="brand">Samsung</div>
+
+            <h2 class="phone-name">
+                Samsung Galaxy S26 Ultra
+            </h2>
+
+            <p class="description">
+                Premium flagship smartphone with a 6.9-inch
+                Dynamic AMOLED 2X display, advanced camera
+                system, Snapdragon performance and Galaxy AI.
+            </p>
+
+            <button
+                class="view-button"
+                onclick="showSpecifications()">
+                View Full Specifications
+            </button>
         </div>
 
     </div>
+
+    <div id="specifications">
+
+        <!-- NETWORK -->
+
+        <div class="spec-section">
+
+            <h2>📶 Network</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Technology</div>
+                <div class="spec-value">GSM / CDMA / HSPA / LTE / 5G</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">SIM</div>
+                <div class="spec-value">Model/region dependent</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">5G</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+        </div>
+
+
+        <!-- LAUNCH -->
+
+        <div class="spec-section">
+
+            <h2>🚀 Launch</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Announcement</div>
+                <div class="spec-value">2026</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Status</div>
+                <div class="spec-value">Available</div>
+            </div>
+
+        </div>
+
+
+        <!-- BODY -->
+
+        <div class="spec-section">
+
+            <h2>📱 Body</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Dimensions</div>
+                <div class="spec-value">163.6 × 78.1 × 7.9 mm</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Weight</div>
+                <div class="spec-value">214 g</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">S Pen</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+        </div>
+
+
+        <!-- DISPLAY -->
+
+        <div class="spec-section">
+
+            <h2>🖥️ Display</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Size</div>
+                <div class="spec-value">6.9 inches</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Technology</div>
+                <div class="spec-value">Dynamic AMOLED 2X</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Resolution</div>
+                <div class="spec-value">3120 × 1440 pixels (QHD+)</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Refresh Rate</div>
+                <div class="spec-value">Adaptive up to 120 Hz</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Privacy Display</div>
+                <div class="spec-value">Built-in Privacy Display</div>
+            </div>
+
+        </div>
+
+
+        <!-- PROCESSOR -->
+
+        <div class="spec-section">
+
+            <h2>⚡ Platform & Chipset</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Chipset</div>
+                <div class="spec-value">
+                    Qualcomm Snapdragon 8 Elite Gen 5 for Galaxy
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Process</div>
+                <div class="spec-value">3 nm</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">CPU</div>
+                <div class="spec-value">Octa-Core</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Maximum CPU Speed</div>
+                <div class="spec-value">Up to 4.74 GHz</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">GPU</div>
+                <div class="spec-value">
+                    Qualcomm Adreno GPU
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">AI / NPU</div>
+                <div class="spec-value">
+                    Enhanced AI processing
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- MEMORY -->
+
+        <div class="spec-section">
+
+            <h2>💾 Memory</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">RAM</div>
+                <div class="spec-value">12 GB / 16 GB</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Storage</div>
+                <div class="spec-value">
+                    256 GB / 512 GB / 1 TB
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">RAM Speed</div>
+                <div class="spec-value">
+                    Not officially specified
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">microSD</div>
+                <div class="spec-value">Not supported</div>
+            </div>
+
+        </div>
+
+
+        <!-- REAR CAMERA -->
+
+        <div class="spec-section">
+
+            <h2>📷 Rear Camera</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Main Camera</div>
+                <div class="spec-value">
+                    200 MP, f/1.4
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Ultra Wide</div>
+                <div class="spec-value">
+                    50 MP, f/1.9
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Telephoto</div>
+                <div class="spec-value">
+                    10 MP, f/2.4, 3× optical zoom
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Periscope Telephoto</div>
+                <div class="spec-value">
+                    50 MP, f/2.9, 5× optical zoom
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">OIS</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Autofocus</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Digital Zoom</div>
+                <div class="spec-value">Up to 100×</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Video</div>
+                <div class="spec-value">
+                    Up to 8K @ 30fps
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SELFIE -->
+
+        <div class="spec-section">
+
+            <h2>🤳 Selfie Camera</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Resolution</div>
+                <div class="spec-value">12 MP</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Aperture</div>
+                <div class="spec-value">f/2.2</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Autofocus</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+        </div>
+
+
+        <!-- CONNECTIVITY -->
+
+        <div class="spec-section">
+
+            <h2>📡 Connectivity</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Wi-Fi</div>
+                <div class="spec-value">
+                    Wi-Fi 7
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Bluetooth</div>
+                <div class="spec-value">
+                    Bluetooth 6.0
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">NFC</div>
+                <div class="spec-value">Yes</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">UWB</div>
+                <div class="spec-value">Yes</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">USB</div>
+                <div class="spec-value">USB Type-C</div>
+            </div>
+
+        </div>
+
+
+        <!-- BATTERY -->
+
+        <div class="spec-section">
+
+            <h2>🔋 Battery</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Capacity</div>
+                <div class="spec-value">5000 mAh</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Type</div>
+                <div class="spec-value">Lithium-Ion</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Charging</div>
+                <div class="spec-value">
+                    Fast wired charging
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Wireless Charging</div>
+                <div class="spec-value">Supported</div>
+            </div>
+
+        </div>
+
+
+        <!-- SENSORS -->
+
+        <div class="spec-section">
+
+            <h2>🧭 Sensors</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Sensors</div>
+                <div class="spec-value">
+                    Accelerometer, Barometer, Fingerprint,
+                    Gyro, Geomagnetic, Hall, Light,
+                    Proximity
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SOFTWARE -->
+
+        <div class="spec-section">
+
+            <h2>🤖 Software</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">Operating System</div>
+                <div class="spec-value">Android</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Samsung Interface</div>
+                <div class="spec-value">One UI</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Security Updates</div>
+                <div class="spec-value">
+                    Official support period varies by region/model
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PERFORMANCE -->
+
+        <div class="spec-section">
+
+            <h2>🚀 Performance</h2>
+
+            <div class="spec-row">
+                <div class="spec-name">CPU Speed</div>
+                <div class="spec-value">Up to 4.74 GHz</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">CPU Cores</div>
+                <div class="spec-value">8 cores</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">RAM Speed</div>
+                <div class="spec-value">
+                    Not officially specified
+                </div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-name">Benchmark</div>
+                <div class="spec-value">
+                    Add verified benchmark results with test source
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<div class="card">
-    <h2>Phone Comparison</h2>
-    <p>Compare processors, cameras, displays, RAM, battery and more.</p>
-    <button>Compare Phones</button>
 </div>
 
+<div class="footer">
+    © 2026 Tech Tomorrow — Global Smartphone Database
 </div>
+
+
+<script>
+
+function showSpecifications(){
+
+    const specs =
+        document.getElementById("specifications");
+
+    specs.style.display = "block";
+
+    specs.scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function searchPhone(){
+
+    const search =
+        document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    const card =
+        document.getElementById("phoneCard");
+
+    if(
+        "samsung galaxy s26 ultra"
+        .includes(search)
+        ||
+        search === ""
+    ){
+
+        card.style.display = "block";
+
+    }else{
+
+        card.style.display = "none";
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
